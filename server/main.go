@@ -16,7 +16,7 @@ func echoHandler(w http.ResponseWriter, r *http.Request) {
 		log.Println("Failed to accept connection:", err)
 		return
 	}
-	defer conn.Close(websocket.StatusInternalError, "Internal error")
+	defer conn.Close(websocket.StatusNormalClosure, "")
 
 	for {
 		msgType, data, err := conn.Read(r.Context())
